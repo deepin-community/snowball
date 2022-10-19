@@ -1,0 +1,8 @@
+#!/bin/sh
+set -eu
+
+cp -a /usr/share/snowball/data/english/* "$AUTOPKGTEST_TMP"
+cd "$AUTOPKGTEST_TMP"
+
+stemwords < voc.txt > test-output.txt
+cmp output.txt test-output.txt

@@ -1,0 +1,186 @@
+snowball (2.2.0-1) unstable; urgency=medium
+
+  * New upstream release.
+  * Refresh patches.
+
+ -- Stefano Rivera <stefanor@debian.org>  Fri, 12 Nov 2021 22:23:00 -0800
+
+snowball (2.1.0-2) unstable; urgency=medium
+
+  [ Helmut Grohne ]
+  * Reduce Build-Depends: (Closes: #984745)
+    + Declaratively request dh addon python3.
+    + Skip python build during arch-only.
+    + Move python dependencies to Build-Depends-Indep.
+
+  [ Stefano Rivera ]
+  * Update watch file to match on tags (it wasn't matching on releases any
+    more).
+  * Bump Standards-Version to 4.6.0, no changes needed.
+  * Add changelog link to upstream metadata.
+  * Declare Build-Depends-Package in symbols file.
+  * Drop --dbgsym-migration, it was present in bullseye.
+
+ -- Stefano Rivera <stefanor@debian.org>  Mon, 20 Sep 2021 10:56:54 -0700
+
+snowball (2.1.0-1) unstable; urgency=low
+
+  [ Stefano Rivera ]
+  * New upstream release.
+  * Refresh patches.
+  * Bump Standards-Version to 4.5.1, no changes needed.
+  * Update copyright.
+  * d/rules: dist_libstemmer_python now places the python sources in a
+    versioned directory. Handle that.
+  * Build-Depend on snowball-data >= 0+20210120, with Armenian and Yiddish.
+
+  [ Debian Janitor ]
+  * Set upstream metadata fields: Bug-Database, Bug-Submit, Repository,
+    Repository-Browse.
+
+ -- Stefano Rivera <stefanor@debian.org>  Mon, 25 Jan 2021 00:13:13 -0700
+
+snowball (2.0.0-2) unstable; urgency=medium
+
+  [ Dmitry Shachnev ]
+  * Update to debhelper compat level 13.
+  * Remove dh-exec dependency, debhelper now supports substitutions natively.
+  * Build python3-snowballstemmer package from this source.
+  * Add debian/clean file.
+
+  [ Stefano Rivera ]
+  * Add copyright holders.
+
+ -- Stefano Rivera <stefanor@debian.org>  Tue, 04 Aug 2020 22:51:00 -0700
+
+snowball (2.0.0-1) unstable; urgency=medium
+
+  [ Dmitry Shachnev ]
+  * New upstream release. (Closes: #852197)
+  * Update Homepage URL to point to new snowballstem.org website.
+  * Add a debian/watch file.
+  * Remove the get-packaged-orig-source target, no longer needed.
+  * Refresh build-options.diff and shared-library.diff for the new
+    version.
+  * Drop testdata-location.diff, the testdata location can now be
+    overridden using STEMMING_DATA variable.
+  * Drop fix-python-invocation.patch, no longer needed.
+  * Remove some obsolete information from debian/copyright.
+  * Update Build-Depends: replace python2 with python3, add snowball-data.
+    (Closes: #943274)
+  * Update commands to run build-time tests and autopkgtests.
+
+  [ Stefano Rivera ]
+  * Bump Standards-Version to 4.5.0, no changes needed.
+
+ -- Stefano Rivera <stefanor@debian.org>  Tue, 14 Jul 2020 17:59:30 -0700
+
+snowball (0+svn585-2) unstable; urgency=medium
+
+  [ Stefano Rivera ]
+  * Thanks for the NMU, Boyuan.
+  * Declare Rules-Requires-Root: no.
+  * Bump Standards-Version to 4.4.0, no changes needed.
+  * Bump debhelper compat level to 12, using B-D syntax
+    - Disable parallelism in tests.
+  * Bump copyright years.
+  * Replace libstemmer0d-dbg with an automatic dbgsym package.
+
+  [ Gianfranco Costamagna ]
+  * Team upload
+  * Force python2 in tests too
+
+  [ Debian Janitor ]
+  * Update standards version to 4.4.1, no changes needed.
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Tue, 10 Mar 2020 21:47:28 +0100
+
+snowball (0+svn585-1.2) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Make autopkgtests cross-test-friendly. (Closes: #953525)
+  * Use python2 to build
+
+ -- Gianfranco Costamagna <locutusofborg@debian.org>  Tue, 10 Mar 2020 13:34:54 +0100
+
+snowball (0+svn585-1.1) unstable; urgency=medium
+
+  * Non-maintainer upload.
+  * Rebuild to drop binary dependency on transitional package
+    multiarch-support.
+  * debian/control:
+    - Drop unnecessary build-dependency dpkg-dev.
+
+  [ Stefano Rivera ]
+  * debian/rules: Switch orig tarballs to xz.
+  * Respect LDFLAGS when building executables.
+
+  [ Ondřej Nový ]
+  * d/tests: Use AUTOPKGTEST_TMP instead of ADTTMP
+  * d/copyright: Change Format URL to correct one
+  * d/control: Deprecating priority extra as per policy 4.0.1
+  * d/control: Set Vcs-* to salsa.debian.org
+  * d/control: Remove XS-Testsuite field, not needed anymore
+
+ -- Boyuan Yang <byang@debian.org>  Fri, 13 Sep 2019 22:08:28 -0400
+
+snowball (0+svn585-1) unstable; urgency=low
+
+  * New upstream snapshot.
+  * Refresh patches.
+  * Build-Depend on python, now used for character set conversions.
+  * libstemmer-dev can be Multi-Arch: same
+  * Use dpkg-buildflags --export=configure, now that we have CPPFLAGS too.
+    - Bump dpkg-dev BD to 1.16.1.
+  * Append to CPPFLAGS in build-options.diff, so that we don't lose necessary
+    include directories.
+  * Bump Standards-Version to 3.9.6, no changes needed.
+  * Update machine-readable copyright Format to 1.0, and bump years.
+  * Drop Jakub from Uploaders at his request.
+  * Move from bzr to git.
+  * Bump debhelper compat level to 9, to use dh-exec.
+  * Add autopkgtest suite.
+
+ -- Stefano Rivera <stefanor@debian.org>  Sun, 19 Oct 2014 20:26:42 -0700
+
+snowball (0+svn546-2) unstable; urgency=low
+
+  * Pass dpkg-buildflags CFLAGS and LDFLAGS to dh_auto_build
+    - No need to check for noopt in build-options.diff any more.
+  * Drop unnecessary dh_auto_test override
+
+ -- Stefano Rivera <stefanor@debian.org>  Mon, 26 Sep 2011 01:48:59 +0200
+
+snowball (0+svn546-1) unstable; urgency=low
+
+  * New upstream snapshot.
+  * Binary package descriptions:
+    - Provide the full description for all except -dbg.
+    - Mention that -dev contains static library.
+  * Patches:
+    - Renamed shared-module.diff -> shared-library.diff.
+      Removed explicit ranlib call.
+    - Moved all compile options changes into build-options.diff.
+  * Bump Standards-Version to 3.9.2, no changes needed.
+  * Bump debhelper compat to 8.
+  * Updated my e-mail address.
+  * Update copyright format.
+  * Sort *Depends and debhelper install file contents.
+  * Convert for multi-arch:
+    - libstemmer0d: Pre-Depend on ${misc:Pre-Depends}
+    - libstemmer0d{,-dbg}: Multi-Arch: same
+    - libstemmer-tools: Multi-Arch: foreign
+    - Install shared and static library to multi-arch location.
+    - Build-Depend on dpkg-dev >= 1.16.
+
+ -- Stefano Rivera <stefanor@debian.org>  Sat, 10 Sep 2011 21:34:47 +0200
+
+snowball (0+svn527-1) unstable; urgency=low
+
+  [ Stefano Rivera ]
+  * Initial release. (Closes: #572135)
+
+  [ Jakub Wilk ]
+  * Add myself to uploaders.
+
+ -- Stefano Rivera <stefano@rivera.za.net>  Sat, 13 Mar 2010 03:52:06 +0200

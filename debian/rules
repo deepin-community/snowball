@@ -1,0 +1,22 @@
+#!/usr/bin/make -f
+
+include /usr/share/dpkg/pkg-info.mk
+
+%:
+	dh $@
+
+override_dh_auto_build:
+	dh_auto_build -- $(shell dpkg-buildflags --export=configure)
+ifneq (,$(filter python3-snowballstemmer,$(shell dh_listpackages)))
+	$(MAKE) dist_libstemmer_python
+	dh_auto_build --buildsystem=pybuild -- --dir dist/snowballstemmer-$(DEB_VERSION_UPSTREAM) --name snowballstemmer
+endif
+
+override_dh_auto_install-indep:
+	dh_auto_install --buildsystem=pybuild -- --dir dist/snowballstemmer-$(DEB_VERSION_UPSTREAM) --name snowballstemmer
+
+override_dh_auto_test:
+	STEMMING_DATA=/usr/share/snowball/data dh_auto_test --no-parallel
+
+override_dh_installdocs-arch:
+	dh_installdocs --link-doc=libstemmer0d

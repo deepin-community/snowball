@@ -1,0 +1,3 @@
+.pybuild/
+libstemmer.a
+libstemmer.so*

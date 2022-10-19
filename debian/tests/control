@@ -1,0 +1,8 @@
+Tests: stemwords
+Depends: libstemmer-tools, snowball-data
+
+Tests: compilation
+Depends: build-essential, libstemmer-dev
+
+Tests: python-stemwords
+Depends: python3-snowballstemmer, snowball-data

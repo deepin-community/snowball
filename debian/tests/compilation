@@ -1,0 +1,40 @@
+#!/bin/sh
+set -efu
+
+cd "$AUTOPKGTEST_TMP"
+
+if [ -n "${DEB_HOST_GNU_TYPE:-}" ]; then
+    CROSS_COMPILE="$DEB_HOST_GNU_TYPE-"
+else
+    CROSS_COMPILE=
+fi
+
+cat > test.c << EOF
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include "libstemmer.h"
+
+int main(int argc, char **argv) {
+	char *language = "english";
+	char *charenc = NULL;
+	struct sb_stemmer *stemmer = sb_stemmer_new(language, charenc);
+	if (stemmer == 0) {
+		abort();
+	}
+	char *word = "validity";
+	char *expected = "valid";
+	const sb_symbol *stem = sb_stemmer_stem(stemmer, (sb_symbol *)word, strlen(word));
+	if (memcmp(stem, expected, strlen(expected)) != 0) {
+		abort();
+	}
+	sb_stemmer_delete(stemmer);
+	return 0;
+}
+EOF
+
+${CROSS_COMPILE}gcc -o test test.c -l stemmer
+./test
+
+${CROSS_COMPILE}gcc -o test test.c -static -l stemmer
+./test

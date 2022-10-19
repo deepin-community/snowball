@@ -1,0 +1,104 @@
+Source: snowball
+Section: libs
+Priority: optional
+Maintainer: Stefano Rivera <stefanor@debian.org>
+Build-Depends:
+ debhelper-compat (= 13),
+ snowball-data (>= 0+20210120)
+Build-Depends-Indep:
+ dh-sequence-python3,
+ python3-all,
+ python3-setuptools,
+Standards-Version: 4.6.0
+Homepage: https://snowballstem.org/
+Vcs-Git: https://salsa.debian.org/debian/snowball.git
+Vcs-Browser: https://salsa.debian.org/debian/snowball
+Rules-Requires-Root: no
+
+Package: libstemmer0d
+Architecture: any
+Pre-Depends: ${misc:Pre-Depends}
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Multi-Arch: same
+Description: Snowball stemming algorithms for use in Information Retrieval
+ Snowball provides access to efficient algorithms for calculating a
+ "stemmed" form of a word.  This is a form with most of the common
+ morphological endings removed; hopefully representing a common
+ linguistic base form.  This is most useful in building search engines
+ and information retrieval software; for example, a search with stemming
+ enabled should be able to find a document containing "cycling" given the
+ query "cycles".
+ .
+ Snowball provides algorithms for several (mainly European) languages.
+ It also provides access to the classic Porter stemming algorithm for
+ English: although this has been superseded by an improved algorithm, the
+ original algorithm may be of interest to information retrieval
+ researchers wishing to reproduce results of earlier experiments.
+
+Package: libstemmer-dev
+Section: libdevel
+Architecture: any
+Depends: libstemmer0d (= ${binary:Version}), ${misc:Depends}
+Multi-Arch: same
+Description: Snowball stemming algorithms, development kit
+ Snowball provides access to efficient algorithms for calculating a
+ "stemmed" form of a word.  This is a form with most of the common
+ morphological endings removed; hopefully representing a common
+ linguistic base form.  This is most useful in building search engines
+ and information retrieval software; for example, a search with stemming
+ enabled should be able to find a document containing "cycling" given the
+ query "cycles".
+ .
+ Snowball provides algorithms for several (mainly European) languages.
+ It also provides access to the classic Porter stemming algorithm for
+ English: although this has been superseded by an improved algorithm, the
+ original algorithm may be of interest to information retrieval
+ researchers wishing to reproduce results of earlier experiments.
+ .
+ This package contains the static library and header files used in development.
+
+Package: libstemmer-tools
+Section: text
+Architecture: any
+Multi-Arch: foreign
+Depends: ${misc:Depends}, ${shlibs:Depends}
+Description: Simple word stemming utility using Snowball
+ Snowball provides access to efficient algorithms for calculating a
+ "stemmed" form of a word.  This is a form with most of the common
+ morphological endings removed; hopefully representing a common
+ linguistic base form.  This is most useful in building search engines
+ and information retrieval software; for example, a search with stemming
+ enabled should be able to find a document containing "cycling" given the
+ query "cycles".
+ .
+ Snowball provides algorithms for several (mainly European) languages.
+ It also provides access to the classic Porter stemming algorithm for
+ English: although this has been superseded by an improved algorithm, the
+ original algorithm may be of interest to information retrieval
+ researchers wishing to reproduce results of earlier experiments.
+ .
+ This package contains "stemwords", a simple utility for stemming words.
+
+Package: python3-snowballstemmer
+Section: python
+Architecture: all
+Depends: ${misc:Depends}, ${python3:Depends}
+Suggests: python3-stemmer
+Description: Pure Python Snowball stemming library
+ Snowball provides access to efficient algorithms for calculating a
+ "stemmed" form of a word.  This is a form with most of the common
+ morphological endings removed; hopefully representing a common
+ linguistic base form.  This is most useful in building search engines
+ and information retrieval software; for example, a search with stemming
+ enabled should be able to find a document containing "cycling" given the
+ query "cycles".
+ .
+ Snowball provides algorithms for several (mainly European) languages.
+ It also provides access to the classic Porter stemming algorithm for
+ English: although this has been superseded by an improved algorithm, the
+ original algorithm may be of interest to information retrieval
+ researchers wishing to reproduce results of earlier experiments.
+ .
+ This package contains the pure Python module that implements Snowball
+ algorithms. When python3-stemmer package (which contains the C extension)
+ is installed, it uses that extension instead of the pure Python code.

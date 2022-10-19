@@ -1,0 +1,9 @@
+#!/bin/sh
+set -eu
+
+cp -a /usr/share/snowball/data/english/* "$AUTOPKGTEST_TMP"
+cp python/stemwords.py "$AUTOPKGTEST_TMP"
+cd "$AUTOPKGTEST_TMP"
+
+python3 stemwords.py -i voc.txt -o test-output.txt -l english
+cmp output.txt test-output.txt
