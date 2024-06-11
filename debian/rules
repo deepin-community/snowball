@@ -1,11 +1,13 @@
 #!/usr/bin/make -f
 
+include /usr/share/dpkg/architecture.mk
 include /usr/share/dpkg/pkg-info.mk
 
 %:
 	dh $@
 
 override_dh_auto_build:
+	dpkg-architecture -a$(DEB_BUILD_ARCH) -f -c dh_auto_build -- snowball
 	dh_auto_build -- $(shell dpkg-buildflags --export=configure)
 ifneq (,$(filter python3-snowballstemmer,$(shell dh_listpackages)))
 	$(MAKE) dist_libstemmer_python

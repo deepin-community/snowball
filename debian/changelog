@@ -1,3 +1,29 @@
+snowball (2.2.0-4) unstable; urgency=medium
+
+  * Upload to unstable.
+
+ -- Stefano Rivera <stefanor@debian.org>  Sat, 10 Jun 2023 17:52:01 -0400
+
+snowball (2.2.0-3) experimental; urgency=medium
+
+  [ Helmut Grohne ]
+  * Fix FTCBFS: Build snowball compiler for the build architecture.
+    (Closes: #1034291)
+
+  [ Stefano Rivera ]
+  * Patch: Correctly clean stemtest.
+  * Bump Standards-Version to 4.6.2, no changes needed.
+  * Bump copyright years.
+
+ -- Stefano Rivera <stefanor@debian.org>  Wed, 12 Apr 2023 10:58:39 -0400
+
+snowball (2.2.0-2) unstable; urgency=medium
+
+  * Bump Standards-Version to 4.6.1, no changes needed.
+  * Support the nocheck build profile.
+
+ -- Stefano Rivera <stefanor@debian.org>  Tue, 18 Oct 2022 18:07:33 +0200
+
 snowball (2.2.0-1) unstable; urgency=medium
 
   * New upstream release.

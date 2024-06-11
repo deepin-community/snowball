@@ -1,0 +1,23 @@
+From: Stefano Rivera <stefanor@debian.org>
+Date: Wed, 12 Apr 2023 10:43:28 -0400
+Subject: Clean stemtest
+
+Forwarded: https://github.com/snowballstem/snowball/pull/179
+---
+ GNUmakefile | 3 ++-
+ 1 file changed, 2 insertions(+), 1 deletion(-)
+
+diff --git a/GNUmakefile b/GNUmakefile
+index bf832c6..5d38d48 100644
+--- a/GNUmakefile
++++ b/GNUmakefile
+@@ -197,7 +197,8 @@ clean:
+ 	      $(ADA_SOURCES) \
+               libstemmer/mkinc.mak libstemmer/mkinc_utf8.mak \
+               libstemmer/libstemmer.c libstemmer/libstemmer_utf8.c \
+-	      algorithms.mk
++	      algorithms.mk \
++	      stemtest$(EXEEXT) $(STEMTEST_OBJECTS)
+ 	rm -rf dist .shared
+ 	-rmdir $(c_src_dir)
+ 	-rmdir $(python_output_dir)
