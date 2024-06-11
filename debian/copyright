@@ -11,7 +11,7 @@ Copyright: 2001,      Dr Martin Porter
 License: BSD-3-snowball
 
 Files: debian/*
-Copyright: 2010-2021, Stefano Rivera <stefanor@debian.org>
+Copyright: 2010-2023, Stefano Rivera <stefanor@debian.org>
            2019-2020, Dmitry Shachnev <mitya57@debian.org>
            2020,      Gianfranco Costamagna <costamagnagianfranco@yahoo.it>
 License: BSD-3-snowball
